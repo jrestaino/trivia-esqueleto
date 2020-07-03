@@ -3,6 +3,7 @@ from apptrivia import db
 
 
 class Categoria(db.Model):
+    __tablename__ = 'categoria'
     id = db.Column(db.Integer, primary_key=True)
     descripcion = db.Column(db.String(64), index=True, unique=True)
     preguntas = db.relationship('Pregunta', backref='categoria', lazy='dynamic')
@@ -11,6 +12,7 @@ class Categoria(db.Model):
 
 
 class Pregunta(db.Model):
+    __tablename__ = 'pregunta'
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(255), nullable=False, unique=True)
     categoria_id = db.Column(db.Integer, db.ForeignKey('categoria.id'))

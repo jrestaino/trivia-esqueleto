@@ -13,13 +13,16 @@ SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'models/trivia.db
 
 POSTGRES = {
     'user': 'postgres',
-    'pw': 'cursoflaskBD',
+    'pw': 'postgres',
     'db': 'trivia',
     'host': 'localhost',
     'port': '5432',
 }
 SECRET_KEY =  'A SECRET KEY'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
-SQLALCHEMY_DATABASE_URI = 'postgresql://%(user)s:\
-%(pw)s@%(host)s:%(port)s/%(db)s' % POSTGRES
+
+#postgresql://username:password@hostname/database
+SQLALCHEMY_DATABASE_URI = f"postgresql://{POSTGRES['user']}:" \
+                          f"{POSTGRES['pw']}@{POSTGRES['host']}:" \
+                          f"{POSTGRES['port']}/{POSTGRES['db']}"
 
