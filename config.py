@@ -4,24 +4,22 @@ import os
 DEBUG = True
 
 # configuracion BD
-""""
-SECRET_KEY =  'A SECRET KEY'
-SQLALCHEMY_TRACK_MODIFICATIONS = False
-basedir = os.path.abspath(os.path.dirname(__file__))
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'models/trivia.db')
-"""
 
 POSTGRES = {
     'user': 'postgres',
     'pw': 'postgres',
-    'db': 'trivia',
-    'host': 'localhost',
+    'db': 'relacion_nan',
+    'host': '172.17.0.2',
     'port': '5432',
 }
+
+
 SECRET_KEY =  'A SECRET KEY'
+
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 #postgresql://username:password@hostname/database
+#SQLALCHEMY_DATABASE_URI = "postgresql://postgres:postgres@localhost:5432/trivia"
 SQLALCHEMY_DATABASE_URI = f"postgresql://{POSTGRES['user']}:" \
                           f"{POSTGRES['pw']}@{POSTGRES['host']}:" \
                           f"{POSTGRES['port']}/{POSTGRES['db']}"

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from apptrivia import db
-from models.models import Categoria, Pregunta
+from models.models import Categoria, Pregunta,Usuario
 
 db.drop_all()
 db.create_all()
@@ -12,17 +12,18 @@ c_geogra = Categoria(descripcion="Geografía")
 c_deporte = Categoria(descripcion="Deportes")
 
 # preguntas
-q_Laos = Pregunta(text="¿Cuál es la capital de Laos?", categoria = c_geogra)
-q_Armenia = Pregunta(text="¿Cuál es la población aproximada de Armenia?", categoria = c_geogra)
-q_mundial = Pregunta(text="¿En qué país se jugó la Copa del Mundo de 1962?", categoria = c_deporte)
-
+q_Laos = Pregunta(text="¿Cuál es la capital de Laos?",categoria=c_geogra)
+q_Armenia = Pregunta(text="¿Cuál es la población aproximada de Armenia?",categoria=c_geogra)
+q_mundial = Pregunta(text="¿En qué país se jugó la Copa del Mundo de 1962?",categoria=c_deporte)
 
 
 db.session.add(c_geogra)
 db.session.add(c_deporte)
+
 db.session.add(q_Laos)
 db.session.add(q_Armenia)
 db.session.add(q_mundial)
+
 db.session.commit()
 
 # creamos otros usuarios (…) y los recorremos
@@ -37,3 +38,7 @@ for c in categorias:
 cat = Categoria.query.get(1)
 print(cat)
 
+#Creo un usuario administrador
+admin = Usuario(name="Administrador",email="admin@app.com",admin=True)
+db.session.add(admin)
+db.session.commit()
