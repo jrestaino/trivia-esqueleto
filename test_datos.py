@@ -39,6 +39,6 @@ cat = Categoria.query.get(1)
 print(cat)
 
 #Creo un usuario administrador
-admin = Usuario(name="Administrador",email="admin@app.com",admin=True)
+admin = Usuario(name="Administrador",email="admin@app.com",admin=True,password="passwd")
 db.session.add(admin)
 db.session.commit()

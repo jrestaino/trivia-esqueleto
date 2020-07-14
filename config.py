@@ -8,7 +8,7 @@ DEBUG = True
 POSTGRES = {
     'user': 'postgres',
     'pw': 'postgres',
-    'db': 'relacion_nan',
+    'db': 'trivia_login',
     'host': '172.17.0.2',
     'port': '5432',
 }

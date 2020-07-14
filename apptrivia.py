@@ -7,19 +7,23 @@ from flask_admin.contrib.sqla import ModelView
 app = Flask(__name__)
 admin = Admin(app)
 
-# lee la config desde el archivo config.py
-app.config.from_pyfile('config.py')
-
 # inicializa la base de datos con la config leida
 db = SQLAlchemy(app)
 
+# lee la config desde el archivo config.py
+app.config.from_pyfile('config.py')
+
+
 # rutas disponibles
 from routes import *
-from models.models import Categoria, Pregunta
+from models.models import Categoria, Pregunta,Usuario
 
-# los modelos que queremos mostrar en el admin
+# Los modelos que queremos mostrar en el admin
 admin.add_view(ModelView(Categoria, db.session))
 admin.add_view(ModelView(Pregunta, db.session))
+
+#Agrego el modelo Usuario al Flask Admin
+admin.add_view(ModelView(Usuario, db.session))
 
 # subimos el server (solo cuando se llama directamente a este archivo)
 if __name__ == '__main__':
