@@ -7,11 +7,12 @@ from flask_admin.contrib.sqla import ModelView
 app = Flask(__name__)
 admin = Admin(app)
 
+# lee la config desde el archivo config.py
+app.config.from_pyfile('config.py')
+
 # inicializa la base de datos con la config leida
 db = SQLAlchemy(app)
 
-# lee la config desde el archivo config.py
-app.config.from_pyfile('config.py')
 
 
 # rutas disponibles
@@ -27,4 +28,4 @@ admin.add_view(ModelView(Usuario, db.session))
 
 # subimos el server (solo cuando se llama directamente a este archivo)
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)

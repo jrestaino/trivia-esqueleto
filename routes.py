@@ -7,6 +7,13 @@ from models.models import Categoria, Pregunta
 
 from flask import render_template
 
+
+
+@app.route('/')
+def barra():
+    return "HOLA"
+
+
 @app.route('/trivia')
 def index():
     return "<h2>hola Trivia</h2>"
